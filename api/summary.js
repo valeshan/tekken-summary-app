@@ -21,8 +21,8 @@ Match: { WinRate: ${stats.win_rate}%, RoundsWon: ${stats.rounds_won}, RoundsLost
 }
 
 `;
-  console.log(prompt)
-  return;
+//   console.log(prompt)
+//   return;
 
 const result = await fetch('https://api.together.xyz/v1/chat/completions', {
     method: 'POST',
