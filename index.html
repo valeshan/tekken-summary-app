@@ -1,0 +1,24 @@
+<!-- File: index.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Tekken 8 Stat Summary</h2>
+    <textarea id="matchData" rows="10" cols="50" placeholder="Paste stat JSON here..."></textarea><br/>
+    <button onclick="submit()">Summarize</button>
+    <h3>Summary:</h3>
+    <pre id="result"></pre>
+
+    <script>
+      async function submit() {
+        const matchData = document.getElementById("matchData").value;
+        const res = await fetch("/api/summary", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ matchData })
+        });
+        const data = await res.json();
+        document.getElementById("result").innerText = data.summary;
+      }
+    </script>
+  </body>
+</html>
